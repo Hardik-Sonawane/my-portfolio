@@ -38,7 +38,6 @@ body {
   color: var(--text);
   font-family: 'Space Grotesk', sans-serif;
   overflow-x: hidden;
-  cursor: none;
 }
 
 /* Custom scrollbar */

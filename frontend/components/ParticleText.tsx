@@ -13,9 +13,7 @@ interface Particle {
 }
 
 const COLORS = [
-  "#A855F7", "#C084FC", "#D8B4FE",
-  "#06B6D4", "#38BDF8", "#E2E8F0",
-  "#7C3AED", "#60A5FA",
+  "#FFFFFF",
 ];
 
 const REPULSION_RADIUS = 105;
@@ -93,7 +91,7 @@ export default function ParticleText() {
       const imageData = offCtx.getImageData(0, 0, w, h);
       const data = imageData.data;
 
-      // Sample pixels — gap=2 gives ~35% more particles than gap=3
+      // Sample pixels (gap=1 for max quantity)
       const gap = 1;
       const newParticles: Particle[] = [];
 
@@ -103,13 +101,13 @@ export default function ParticleText() {
           if (data[idx + 3] > 128) {
             const color = COLORS[Math.floor(Math.random() * COLORS.length)];
             newParticles.push({
-              x: Math.random() * w,      // start scattered
-              y: Math.random() * h,
+              x: x,
+              y: y,
               originX: x,
               originY: y,
               vx: 0,
               vy: 0,
-              size: Math.random() * 0.6 + 0.1,
+              size: Math.random() * 0.35 + 0.15,
               color,
             });
           }
@@ -155,10 +153,9 @@ export default function ParticleText() {
         p.x += p.vx;
         p.y += p.vy;
 
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        // fillRect is exponentially faster than arc for thousands of tiny particles!
         ctx.fillStyle = p.color;
-        ctx.fill();
+        ctx.fillRect(p.x, p.y, p.size * 2, p.size * 2);
       }
 
       animFrameRef.current = requestAnimationFrame(animate);
