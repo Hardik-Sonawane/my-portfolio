@@ -1,0 +1,88 @@
+Hardik Sonawane
+AI/ML Engineer · Computer Vision · Full-Stack Developer · Data Science
+ +91 8208465312 |  sonawanehardik080@gmail.com |  linkedin.com/in/hardik-so |  github.com/Hardik-Sonawane
+PROFESSIONAL SUMMARY
+Passionate AI/ML Engineer and Computer Science student specializing in Data Science, with hands-on experience building
+real-world intelligent systems — from CNN-based computer vision models to full-stack AI-integrated web applications. Skilled
+in end-to-end ML pipelines including data preprocessing, model training, evaluation, and deployment. Active hackathon
+participant with a strong problem-solving mindset, seeking internship or junior AI/ML roles to contribute to impactful technology
+products.
+AI/ML PROJECTS
+ Plant Disease Detection System
+Tech Stack: Python · TensorFlow · CNN · OpenCV · Flask
+ github.com/Hardik-Sonawane
+• Built a CNN-based deep learning model to detect 15+ plant leaf diseases from image inputs with high classification accuracy
+• Performed dataset preprocessing, augmentation (rotation, flipping, zoom) to improve model generalization and reduce
+overfitting
+• Deployed model via Flask web app providing predictions with disease name, severity analysis, and treatment
+recommendations
+• Achieved robust performance through hyperparameter tuning and evaluation using confusion matrix and F1-score metrics
+ iPark — AI-Driven Smart Parking Management
+Tech Stack: Python · OpenCV · Image Processing · JavaScript · Flask · Real-Time Dashboard
+ github.com/Hardik-Sonawane
+• Developed a camera-based real-time parking occupancy detection system using classical Computer Vision and ML logic
+• Applied frame differencing and region-based detection algorithms to accurately identify vacant vs occupied parking slots
+• Integrated live web dashboard displaying real-time parking availability — enabling data-driven parking management
+• Optimized processing pipeline for low-latency detection suitable for real-time deployment scenarios
+ Gesture Connect — Vision-Based Gesture Interaction System
+Tech Stack: Python · MediaPipe · OpenCV · Hand Landmark Detection
+ github.com/Hardik-Sonawane
+• Implemented real-time hand gesture recognition system for controlling digital interfaces without physical input devices
+• Utilized MediaPipe hand landmark tracking pipeline to detect and map 21 hand key points for gesture classification
+• Optimized UI reaction time and gesture mapping logic for smooth, low-latency gesture-driven user interactions
+• Potential applications include accessibility tools, touchless interfaces, and AR/VR control systems
+EXPERIENCE
+AI/ML Project Developer & Technical Contributor
+College Projects / Freelance · Pune, Maharashtra
+Jan 2025 – Present
+• Designed and deployed ML-based systems including computer vision applications achieving real-time inference
+• Built end-to-end ML pipelines: data collection → preprocessing → model training → evaluation → web deployment
+• Executed full-stack integrations for AI systems using Python, Flask/Node.js, React, and interactive dashboards
+• Collaborated with peers in hackathons and technical events to deliver AI prototypes under time constraints
+• Participated in Tech-Pragyan, DIPEX, and multiple AI-focused competitions — demonstrating applied AI skills
+TECHNICAL SKILLS
+AI / ML
+Libraries
+Programming
+CNNs · Supervised/Unsupervised ML · Computer Vision · Feature Engineering · Model Deployment · Transfer
+Learning
+TensorFlow · Scikit-Learn · OpenCV · NumPy · Pandas · Matplotlib · MediaPipe
+Python · C/C++ · JavaScript
+React · Node.js · Flask · REST APIs · HTML · CSS
+Web Dev
+Data Science
+EDA · Data Cleaning · Data Visualization · Statistical Analysis
+Databases
+Cloud / DevOps
+Soft Skills
+Languages
+EDUCATION
+MySQL · MongoDB
+AWS (Basic) · Azure (Basic) · GCP (Basic) · Git · GitHub
+Leadership · Analytical Thinking · Teamwork · Problem Solving · Time Management
+English · Hindi · Marathi
+B.Tech — Computer Engineering (Data Science)
+Sanjivani College of Engineering
+Focus: AI/ML, Data Science, Computer Vision, Full Stack Development
+Higher Secondary Education (HSC)
+Maharashtra, India
+Science Stream
+CERTIFICATIONS & ACHIEVEMENTS
+Aug 2023 – May 2027
+2021 – 2022
+• Data Science Certification
+• Full-Stack Development Certification
+Completed [Industry Recognized]
+Completed [Industry Recognized]
+• Google IT Automation with Python
+• TensorFlow Developer Certificate
+Coursera / Google [Planned ]
+Google [Planned ]
+• AWS Cloud Practitioner
+Amazon Web Services [Planned ]
+ Participated in Tech-Pragyan, DIPEX and multiple AI-focused hackathons and technical events
+ Built real-time AI prototypes used in academic demonstrations and live project showcases
+ Active contributor to open-source projects on GitHub demonstrating consistent coding practice
+ Developed 3 complete AI/ML systems within first year of college — showcasing rapid learning ability
+ Open To: AI/ML Engineer Intern · Computer Vision Developer · Data Science Intern · Full Stack Developer · Junior AI
+Developer
