@@ -59,20 +59,34 @@ export default function VideoBackground() {
     const stepPerTick = totalDelta / (seconds * FPS);
 
     let current = startTime;
+    let lastTime = performance.now();
 
-    revIntervalRef.current = setInterval(() => {
+    const tick = (now: number) => {
       const vid = videoRef.current;
-      if (!vid) { clearInterval(revIntervalRef.current!); revIntervalRef.current = null; return; }
+      // Note: we store raf id in revIntervalRef (using it as a generic handle)
+      if (!vid) { 
+        if (revIntervalRef.current) cancelAnimationFrame(revIntervalRef.current as number); 
+        revIntervalRef.current = null; 
+        return; 
+      }
 
-      current -= stepPerTick;
+      const deltaMs = now - lastTime;
+      lastTime = now;
+      
+      const step = (deltaMs / 1000) * (totalDelta / seconds);
+      current -= step;
+
       if (current <= targetTime) {
         vid.currentTime = targetTime;
-        clearInterval(revIntervalRef.current!);
+        if (revIntervalRef.current) cancelAnimationFrame(revIntervalRef.current as number);
         revIntervalRef.current = null;
       } else {
         vid.currentTime = current;
+        revIntervalRef.current = requestAnimationFrame(tick) as any;
       }
-    }, intervalMs);
+    };
+
+    revIntervalRef.current = requestAnimationFrame(tick) as any;
   };
 
   /* ── mount ────────────────────────────────────────────── */
@@ -85,7 +99,14 @@ export default function VideoBackground() {
     v.currentTime = 0;
 
     // Track scroll direction
-    const trackScroll = () => { prevScrollYRef.current = window.scrollY; };
+    let scrollRafId: number | null = null;
+    const trackScroll = () => {
+      if (scrollRafId) return;
+      scrollRafId = requestAnimationFrame(() => {
+        scrollRafId = null;
+        prevScrollYRef.current = window.scrollY;
+      });
+    };
     window.addEventListener("scroll", trackScroll, { passive: true });
 
     // Auto-play 1s on load (hero)
@@ -149,6 +170,8 @@ export default function VideoBackground() {
           objectFit: "cover",
           zIndex: -2,
           pointerEvents: "none",
+          transform: "translateZ(0)",
+          willChange: "transform",
         }}
       >
         <source src="/expansion.mp4" type="video/mp4" />
@@ -166,6 +189,8 @@ export default function VideoBackground() {
             "linear-gradient(180deg,rgba(3,0,13,.50) 0%,rgba(3,0,13,.38) 50%,rgba(3,0,13,.58) 100%)",
           zIndex: -1,
           pointerEvents: "none",
+          transform: "translateZ(0)",
+          willChange: "transform",
         }}
       />
     </>

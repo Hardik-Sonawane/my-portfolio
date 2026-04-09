@@ -91,8 +91,8 @@ export default function ParticleText() {
       const imageData = offCtx.getImageData(0, 0, w, h);
       const data = imageData.data;
 
-      // Sample pixels (gap=1 for max quantity)
-      const gap = 1;
+      // Sample pixels (gap=2 for performance without losing structure)
+      const gap = 2;
       const newParticles: Particle[] = [];
 
       for (let y = 0; y < h; y += gap) {
@@ -107,7 +107,7 @@ export default function ParticleText() {
               originY: y,
               vx: 0,
               vy: 0,
-              size: Math.random() * 0.35 + 0.15,
+              size: Math.random() * 0.45 + 0.25,
               color,
             });
           }
@@ -164,12 +164,18 @@ export default function ParticleText() {
     animate();
 
     // Track mouse relative to canvas
+    let mouseRafId: number | null = null;
     const handleMouseMove = (e: MouseEvent) => {
-      const rect = canvas.getBoundingClientRect();
-      mouseRef.current = {
-        x: e.clientX - rect.left,
-        y: e.clientY - rect.top,
-      };
+      if (mouseRafId) return;
+      mouseRafId = requestAnimationFrame(() => {
+        mouseRafId = null;
+        if (!canvasRef.current) return;
+        const rect = canvasRef.current.getBoundingClientRect();
+        mouseRef.current = {
+          x: e.clientX - rect.left,
+          y: e.clientY - rect.top,
+        };
+      });
     };
     const handleMouseLeave = () => {
       mouseRef.current = { x: -9999, y: -9999 };

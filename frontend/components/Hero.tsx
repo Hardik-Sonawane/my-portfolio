@@ -74,7 +74,7 @@ export default function Hero() {
 
       {/* Content */}
       <motion.div
-        className="relative z-10 max-w-6xl mx-auto px-4 md:px-6 text-center pt-8 md:pt-14"
+        className="relative z-10 max-w-6xl mx-auto px-4 md:px-6 text-center pt-8 md:pt-14 pb-16 md:pb-24"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
@@ -234,7 +234,8 @@ export default function Hero() {
         </motion.div>
       </motion.div>
 
-
+      {/* Divider at the exact bottom boundary of the Hero page */}
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[60%] h-[2px] bg-gradient-to-r from-transparent via-purple-500 to-transparent opacity-80 shadow-[0_0_20px_rgba(168,85,247,0.6)]" />
     </section>
   );
 }
