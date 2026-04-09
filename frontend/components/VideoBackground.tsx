@@ -2,27 +2,27 @@
 import { useEffect, useRef } from "react";
 
 const SECTION_PLAN: { id: string; duration: number }[] = [
-  { id: "hero",           duration: 1 },
-  { id: "about",          duration: 1 },
-  { id: "skills",         duration: 1 },
+  { id: "hero", duration: 1 },
+  { id: "about", duration: 1 },
+  { id: "skills", duration: 1 },
   { id: "core-strengths", duration: 1 },
-  { id: "projects",       duration: 1 },
-  { id: "experience",     duration: 1 },
+  { id: "projects", duration: 1 },
+  { id: "experience", duration: 1 },
   { id: "certifications", duration: 1 },
-  { id: "education",      duration: 1 },
-  { id: "contact",        duration: 1 },
+  { id: "education", duration: 1 },
+  { id: "contact", duration: 1 },
 ];
 
 export default function VideoBackground() {
-  const videoRef        = useRef<HTMLVideoElement>(null);
-  const fwdTimerRef     = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const revIntervalRef  = useRef<ReturnType<typeof setInterval> | null>(null);
-  const prevScrollYRef  = useRef(0);
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const fwdTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const revIntervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const prevScrollYRef = useRef(0);
 
   /* ── helpers ─────────────────────────────────────────── */
 
   const stopAll = () => {
-    if (fwdTimerRef.current)    { clearTimeout(fwdTimerRef.current);    fwdTimerRef.current   = null; }
+    if (fwdTimerRef.current) { clearTimeout(fwdTimerRef.current); fwdTimerRef.current = null; }
     if (revIntervalRef.current) { clearInterval(revIntervalRef.current); revIntervalRef.current = null; }
     const v = videoRef.current;
     if (v && !v.paused) v.pause();
@@ -33,7 +33,7 @@ export default function VideoBackground() {
     const v = videoRef.current;
     if (!v) return;
     stopAll();
-    v.play().catch(() => {/* autoplay blocked */});
+    v.play().catch(() => {/* autoplay blocked */ });
     fwdTimerRef.current = setTimeout(() => {
       if (v && !v.paused) v.pause();
       fwdTimerRef.current = null;
@@ -50,11 +50,11 @@ export default function VideoBackground() {
     stopAll();
     if (v.currentTime <= 0) return; // already at beginning
 
-    const startTime  = v.currentTime;
+    const startTime = v.currentTime;
     const targetTime = Math.max(startTime - seconds, 0);
     const totalDelta = startTime - targetTime;
 
-    const FPS        = 30;
+    const FPS = 30;
     const intervalMs = 1000 / FPS;
     const stepPerTick = totalDelta / (seconds * FPS);
 
@@ -64,21 +64,21 @@ export default function VideoBackground() {
     const tick = (now: number) => {
       const vid = videoRef.current;
       // Note: we store raf id in revIntervalRef (using it as a generic handle)
-      if (!vid) { 
-        if (revIntervalRef.current) cancelAnimationFrame(revIntervalRef.current as number); 
-        revIntervalRef.current = null; 
-        return; 
+      if (!vid) {
+        if (revIntervalRef.current) cancelAnimationFrame(revIntervalRef.current as unknown as number);
+        revIntervalRef.current = null;
+        return;
       }
 
       const deltaMs = now - lastTime;
       lastTime = now;
-      
+
       const step = (deltaMs / 1000) * (totalDelta / seconds);
       current -= step;
 
       if (current <= targetTime) {
         vid.currentTime = targetTime;
-        if (revIntervalRef.current) cancelAnimationFrame(revIntervalRef.current as number);
+        if (revIntervalRef.current) cancelAnimationFrame(revIntervalRef.current as unknown as number);
         revIntervalRef.current = null;
       } else {
         vid.currentTime = current;
